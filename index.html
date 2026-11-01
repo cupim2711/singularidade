@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>// 2711 //</title>
+<style>
+body{background:#000;color:#444;font-family:"Courier New",monospace;text-align:center;padding:10vh 6vw;line-height:2.2}
+p{margin:.4em 0}
+.t{color:#222;font-size:.75em;letter-spacing:.3em;text-transform:uppercase}
+.d{opacity:.55}
+.h{color:#333;font-size:.75em;margin-top:2.4em;line-height:1.9}
+input{background:#000;border:1px solid #222;color:#fff;font:inherit;padding:.6em 1em;text-align:center;outline:none;width:min(340px,80vw)}
+.b{color:#555;cursor:pointer;display:inline-block;margin-top:1em;padding:.3em 1.4em;border:1px solid #222}
+.b:hover{color:#fff;border-color:#555}
+#m{color:#555;min-height:1.6em}
+pre{font:inherit;color:#777;text-align:left;white-space:pre-wrap;word-break:break-word;background:#050505;border:1px solid #151515;padding:1em;margin:1.5em auto;max-width:760px;line-height:1.8;user-select:text}
+.final{color:#fff;letter-spacing:.2em;margin-top:1.5em}
+a{color:#888;text-decoration:none;border-bottom:1px dotted #333}
+hr{border:0;border-top:1px solid #151515;margin:2.5em auto;width:50%}
+@media(max-width:600px){body{padding:8vh 5vw}pre{font-size:.8em}}
+</style>
+</head>
+<body oncontextmenu="return false">
+<p class="t">// singularidade //</p>
+<p>Tudo colapsa para um ponto.</p>
+<p class="d">O ponto nÃ£o tem dimensÃ£o, mas tem peso.</p>
+<p><input id="pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="senha" onkeydown="if(event.key=='Enter')go()"></p>
+<p><span class="b" onclick="go()">abrir</span></p>
+<p id="m"></p>
+<p class="h">Tudo colapsa para um ponto.</p>
+<p class="h">https://cupim2711.github.io/</p>
+<script>
+var P={s:"4YX9Dv+//WOj4N2phibkMQ==",i:"Hc7eJ6CXlhwg7nae",c:"jfV3GxiWfMquoDSbH00IFGjuGtIms9BYy+jNzyCVVcKidz3uRO24JmjTcPpZIFn2moNrvoGDZTXOs2AqK2EckbQeofIMlcaM"};
+function u(x){return Uint8Array.from(atob(x),function(c){return c.charCodeAt(0)})}
+function norm(v){return v.toLowerCase().replace(/[^a-z]/g,"")}
+async function tryPw(pw){
+var k0=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveKey"]);
+var k=await crypto.subtle.deriveKey({name:"PBKDF2",salt:u(P.s),iterations:100000,hash:"SHA-256"},k0,{name:"AES-GCM",length:256},false,["decrypt"]);
+return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:u(P.i)},k,u(P.c)));
+}
+async function go(){
+var m=document.getElementById("m");
+if(!window.crypto||!crypto.subtle){m.textContent="abra pelo endereÃ§o https.";return}
+var v=norm(document.getElementById("pw").value);m.textContent="...";
+try{var h=await tryPw(v);document.open();document.write(h);document.close();return}catch(e){}
+m.textContent="nÃ£o.";
+}
+</script>
+</body>
+</html>
